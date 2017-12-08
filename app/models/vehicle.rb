@@ -9,6 +9,10 @@ class Vehicle < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :vehicle_owner,
+             :through => :resident_parking_permit,
+             :source => :resident
+
   # Validations
 
   validates :license_plate, :presence => true
