@@ -5,6 +5,8 @@ class Vehicle < ApplicationRecord
 
   # Validations
 
+  validates :nickname, :presence => true
+
   validates :year, :presence => true
 
 end
