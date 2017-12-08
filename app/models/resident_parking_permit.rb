@@ -1,6 +1,10 @@
 class ResidentParkingPermit < ApplicationRecord
   # Direct associations
 
+  belongs_to :resident_vehicle,
+             :class_name => "Vehicle",
+             :foreign_key => "vehicle_id"
+
   belongs_to :resident,
              :class_name => "User",
              :counter_cache => true

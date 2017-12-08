@@ -1,6 +1,9 @@
 class Vehicle < ApplicationRecord
   # Direct associations
 
+  has_one    :resident_parking_permit,
+             :dependent => :nullify
+
   # Indirect associations
 
   # Validations
