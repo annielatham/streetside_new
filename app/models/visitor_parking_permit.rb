@@ -21,5 +21,8 @@ class VisitorParkingPermit < ApplicationRecord
   validates :resident_id, :presence => true
 
   validates :valid_date, :presence => true
+  
+  # validates :valid_date, :expiration_date, :overlap => {datetime_new = DateTime.now}
+
 
 end

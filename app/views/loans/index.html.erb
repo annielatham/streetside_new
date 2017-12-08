@@ -8,6 +8,48 @@
     <%= search_form_for @q, :class => collapse_search_form, :id => "loans_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
+
+
+<div class="form-group">
+          <%= f.label :start_time, "Start time" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='start_timegteqPicker'>
+                  <%= f.text_field :start_time_gteq, :class => "form-control", :placeholder => "Start time greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='start_timelteqPicker'>
+                  <%= f.text_field :start_time_lteq, :class => "form-control", :placeholder => "Start time less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#start_timegteqPicker').datetimepicker({
+                  format: 'MMM D, YYYY hh:mm'
+              });
+              $('#start_timelteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#start_timegteqPicker').on("dp.change", function (e) {
+                  $('#start_timelteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#start_timelteqPicker').on("dp.change", function (e) {
+                  $('#start_timegteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+      
         <div class="form-group">
           <%= f.label :end_time, "End time" %>
           <div class="row">
@@ -48,95 +90,55 @@
           });
       </script>
 
-<div class="form-group">
-          <%= f.label :start_time, "Start time" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='start_timegteqPicker'>
-                  <%= f.text_field :start_time_gteq, :class => "form-control", :placeholder => "Start time greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
+<!--<div class="form-group">-->
+<!--          <#%= f.label :created_at, "Created at" %>-->
+<!--          <div class="row">-->
+<!--            <div class='col-md-6 mb-1'>-->
+<!--              <div class='input-group date' id='created_atgteqPicker'>-->
+<!--                  <#%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>-->
+<!--                  <span class="input-group-addon">-->
+<!--                      <span class="glyphicon glyphicon-calendar"></span>-->
+<!--                  </span>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class='col-md-6'>
-              <div class='input-group date' id='start_timelteqPicker'>
-                  <%= f.text_field :start_time_lteq, :class => "form-control", :placeholder => "Start time less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#start_timegteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#start_timelteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#start_timegteqPicker').on("dp.change", function (e) {
-                  $('#start_timelteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#start_timelteqPicker').on("dp.change", function (e) {
-                  $('#start_timegteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-<div class="form-group">
-          <%= f.label :created_at, "Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='created_atgteqPicker'>
-                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='created_atlteqPicker'>
-                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
+<!--            <div class='col-md-6'>-->
+<!--              <div class='input-group date' id='created_atlteqPicker'>-->
+<!--                  <#%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>-->
+<!--                  <span class="input-group-addon">-->
+<!--                      <span class="glyphicon glyphicon-calendar"></span>-->
+<!--                  </span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      <script type="text/javascript">-->
+<!--          $(function () {-->
+<!--              $('#created_atgteqPicker').datetimepicker({-->
+<!--                  format: 'YYYY-MM-DD hh:mm:SS'-->
+<!--              });-->
+<!--              $('#created_atlteqPicker').datetimepicker({-->
+<!--                  useCurrent: false,-->
+<!--                  format: 'YYYY-MM-DD hh:mm:SS'-->
+<!--              });-->
+<!--              $('#created_atgteqPicker').on("dp.change", function (e) {-->
+<!--                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);-->
+<!--              });-->
+<!--              $('#created_atlteqPicker').on("dp.change", function (e) {-->
+<!--                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);-->
+<!--              });-->
+<!--          });-->
+<!--      </script>-->
 
         <div class="form-group">
       <%= f.label :vehicle_nickname_cont, "Vehicle nickname contains" %>
       <%= f.text_field :vehicle_nickname_cont, :class => "form-control", :placeholder => "Vehicle nickname contains" %>
     </div>
 
-<div class="form-group">
-      <%= f.label :lender_username_cont, "User username contains" %>
-      <%= f.text_field :lender_username_cont, :class => "form-control", :placeholder => "User username contains" %>
-    </div>
+<!--<div class="form-group">-->
+<!--      <#%= f.label :lender_username_cont, "User username contains" %>-->
+<!--      <#%= f.text_field :lender_username_cont, :class => "form-control", :placeholder => "User username contains" %>-->
+<!--    </div>-->
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -175,12 +177,12 @@
             </a>
           <% end %>
         </td>
-        <td><%= loan.start_time %></td>
-        <td><%= loan.end_time %></td>
+        <td><%= loan.start_time.strftime("%A, %B %-d, %Y, %l:%M %P") %></td>
+        <td><%= loan.end_time.strftime("%A, %B %-d, %Y, %l:%M %P") %></td>
         <td>
-          <a href="/loans/<%= loan.id %>" class="btn btn-primary">Show</a>
+          <!--<a href="/loans/<%= loan.id %>" class="btn btn-primary">Show</a>-->
           <a href="/loans/<%= loan.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_loan/<%= loan.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/delete_loan/<%= loan.id %>" class="btn btn-danger" rel="nofollow">Revoke</a>
         </td>
       </tr>
       <% end %>

@@ -21,10 +21,10 @@ class User < ApplicationRecord
   end
   # Direct associations
 
-  has_many   :visitor_parking_permits,
+  has_many    :visitor_parking_permits,
              :foreign_key => "resident_id"
 
-  has_many   :resident_parking_permits,
+  has_many   :resident_parking_permits, 
              :foreign_key => "resident_id"
 
   # Indirect associations

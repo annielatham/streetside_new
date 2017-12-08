@@ -36,8 +36,26 @@
           Permit
         </label>
 
+        <!--permit_id of the loan points to the permit-->
+        <!--resident_id of the permit points to the user-->
+        
+        Loan.permit_id == VisitorParkingPermit.id
+        
+        <% @variable each do |var|
+        if Loan.permit_id == VisitorParkingPermit.id
+          
+          VisitorParkingPermit.resident_id == current_user
+        
+        user.id == current_user
+        VisitorParkingPermit.find_by({p})
+        
+        %>
         <%= select_tag(:permit_id, options_from_collection_for_select(VisitorParkingPermit.all, :id, :resident_id, @loan.permit_id), :class => "form-control") %>
+
+
+        <#%= select_tag(:permit_id, options_from_collection_for_select(VisitorParkingPermit.all, :id, :resident_id, @loan.permit_id), :class => "form-control") %>
       </div>
+                 <#%= User.find_by({:id => like.user_id}).username %> likes this
 
       <!-- Label and input for start_time -->
       <div class="form-group">
