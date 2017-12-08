@@ -5,4 +5,6 @@ class VisitorParkingPermit < ApplicationRecord
 
   # Validations
 
+  validates :valid_date, :presence => true
+
 end
