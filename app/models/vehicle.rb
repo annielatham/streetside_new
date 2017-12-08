@@ -5,6 +5,8 @@ class Vehicle < ApplicationRecord
 
   # Validations
 
+  validates :make, :presence => true
+
   validates :model, :presence => true
 
   validates :nickname, :uniqueness => { :scope => [:make, :license_plate, :model] }
