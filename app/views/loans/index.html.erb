@@ -18,8 +18,20 @@
 
       <% @loans.each do |loan| %>
       <tr>
-        <td><%= loan.vehicle.nickname %></td>
-        <td><%= loan.visitor_parking_permit.resident_id %></td>
+        <td>
+          <% if loan.vehicle.present? %>
+            <a href="/vehicles/<%= loan.vehicle.id %>">
+              <%= loan.vehicle.nickname %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if loan.visitor_parking_permit.present? %>
+            <a href="/visitor_parking_permits/<%= loan.visitor_parking_permit.id %>">
+              <%= loan.visitor_parking_permit.resident_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= loan.start_time %></td>
         <td><%= loan.end_time %></td>
         <td>
