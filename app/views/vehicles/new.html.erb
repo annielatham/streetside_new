@@ -18,6 +18,15 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for nickname -->
+      <div class="form-group">
+        <label for="nickname" class="control-label">
+          Nickname
+        </label>
+
+        <input type="text" id="nickname" name="nickname" placeholder="Nickname" class="form-control" value="<%= @vehicle.nickname %>">
+      </div>
+
       <!-- Label and input for year -->
       <div class="form-group">
         <label for="year" class="control-label">
@@ -61,15 +70,6 @@
         </label>
 
         <input type="text" id="license_plate" name="license_plate" placeholder="License plate" class="form-control" value="<%= @vehicle.license_plate %>">
-      </div>
-
-      <!-- Label and input for nickname -->
-      <div class="form-group">
-        <label for="nickname" class="control-label">
-          Nickname
-        </label>
-
-        <input type="text" id="nickname" name="nickname" placeholder="Nickname" class="form-control" value="<%= @vehicle.nickname %>">
       </div>
 
       <button class="btn btn-success">

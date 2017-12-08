@@ -22,23 +22,12 @@
       <input type="hidden" name="resident_id" value="<%= current_user.id %>">
 
       <!-- Label and input for valid_date -->
-      <div class="form-group">
-        <label for="valid_date" class="control-label">
-          Valid date
-        </label>
+      <input type="hidden" name="valid_date" value="2018, 1, 1, 0, 0, 0">
 
-        <input type="text" id="valid_date" name="valid_date" placeholder="Valid date" class="form-control" value="<%= @visitor_parking_permit.valid_date %>">
-      </div>
 
       <!-- Label and input for expiration_date -->
-      <div class="form-group">
-        <label for="expiration_date" class="control-label">
-          Expiration date
-        </label>
-
-        <input type="text" id="expiration_date" name="expiration_date" placeholder="Expiration date" class="form-control" value="<%= @visitor_parking_permit.expiration_date %>">
-      </div>
-
+      <input type="hidden" name="expiration_date" value="2018, 12, 31, 23, 59, 59">
+ 
       <!-- Label and input for activation_code -->
       <div class="form-group">
         <label for="activation_code" class="control-label">
