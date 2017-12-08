@@ -6,6 +6,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    @loan = Loan.new
     @vehicle = Vehicle.find(params[:id])
 
     render("vehicles/show.html.erb")
