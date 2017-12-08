@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "vehicles#index"
   # Routes for the Loan resource:
   # CREATE
   get "/loans/new", :controller => "loans", :action => "new"
