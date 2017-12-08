@@ -1,6 +1,10 @@
 class ResidentParkingPermit < ApplicationRecord
   # Direct associations
 
+  belongs_to :resident,
+             :class_name => "User",
+             :counter_cache => true
+
   # Indirect associations
 
   # Validations
