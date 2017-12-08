@@ -23,6 +23,16 @@
       <!-- Label and input for resident_id -->
       <input type="hidden" name="resident_id" value="<%= current_user.id %>">
 
+       <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Permit Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="e.g. 2018 Visitor Pass 2" class="form-control" value="<%= @visitor_parking_permit.description %>">
+      </div>
+      
+      
       <!-- Label and input for valid_date -->
       <input type="hidden" name="valid_date" value="<%= DateTime.new(2018, 1, 1, 0, 0, 0) %>">
 
