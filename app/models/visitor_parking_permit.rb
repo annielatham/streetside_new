@@ -1,6 +1,9 @@
 class VisitorParkingPermit < ApplicationRecord
   # Direct associations
 
+  has_many   :loans,
+             :foreign_key => "permit_id"
+
   belongs_to :resident,
              :class_name => "User",
              :counter_cache => true
