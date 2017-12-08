@@ -10,6 +10,10 @@ class Loan < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :lender,
+             :through => :visitor_parking_permit,
+             :source => :resident
+
   # Validations
 
 end

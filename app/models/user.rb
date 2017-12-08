@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :visitor_pass_loans,
+             :through => :visitor_parking_permits,
+             :source => :loans
+
   # Validations
 
   validates :address, :presence => true
