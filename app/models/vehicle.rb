@@ -5,6 +5,8 @@ class Vehicle < ApplicationRecord
 
   # Validations
 
+  validates :license_plate, :presence => true
+
   validates :license_plate, :length => { :minimum => 3, :maximum => 10 }
 
   validates :make, :presence => true
