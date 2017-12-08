@@ -1,6 +1,9 @@
 class Vehicle < ApplicationRecord
   # Direct associations
 
+  has_many   :visitor_pass_uses,
+             :class_name => "Loan"
+
   has_one    :resident_parking_permit,
              :dependent => :nullify
 
