@@ -1,5 +1,7 @@
 ActiveAdmin.register VisitorParkingPermit do
 
+ permit_params :resident_id, :valid_date, :expiration_date, :activation_code
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
