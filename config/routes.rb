@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post "/create_resident_parking_permit", :controller => "resident_parking_permits", :action => "create"
 
   # READ
-  get "/resident_parking_permits", :controller => "resident_parking_permits", :action => "index"
+  get "/parking_permits", :controller => "resident_parking_permits", :action => "index"
   get "/resident_parking_permits/:id", :controller => "resident_parking_permits", :action => "show"
 
   # UPDATE
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   post "/create_visitor_parking_permit", :controller => "visitor_parking_permits", :action => "create"
 
   # READ
-  get "/visitor_parking_permits", :controller => "visitor_parking_permits", :action => "index"
+  get "/parking_permits", :controller => "visitor_parking_permits", :action => "index"
   get "/visitor_parking_permits/:id", :controller => "visitor_parking_permits", :action => "show"
 
   # UPDATE

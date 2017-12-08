@@ -23,14 +23,9 @@
         <% end %>
       </dd>
 
-      <dt>Valid date</dt>
-      <dd><%= @resident_parking_permit.valid_date %></dd>
+      <dt>Valid</dt>
+      <dd><%= @resident_parking_permit.valid_date.strftime("%A, %B %d, %Y") %>" - "<%= @res_parking_permit.expiration_date.strftime("%A, %B %d, %Y") %></dd>
 
-      <dt>Expiration date</dt>
-      <dd><%= @resident_parking_permit.expiration_date %></dd>
-
-      <dt>Activation code</dt>
-      <dd><%= @resident_parking_permit.activation_code %></dd>
 
     </dl>
 

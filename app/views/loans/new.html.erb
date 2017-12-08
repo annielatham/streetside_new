@@ -9,7 +9,10 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Loan</h3>
+  <h1>Lend a Pass&nbsp;&nbsp;
+    <a href="/vehicles/new" class="btn btn-md btn-success">Add a Vehicle</a>
+  </h1>
+  
 </div>
 
 <div class="row">
@@ -44,6 +47,11 @@
 
         <input type="text" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @loan.start_time %>">
       </div>
+      
+      <!--<div class="field">-->
+      <!--  <#%= f.label :start_time %><br />-->
+      <!--  <#%= f.datetime_select :start_time, :include_blank => true %>-->
+      <!--</div>-->
 
       <!-- Label and input for end_time -->
       <div class="form-group">
@@ -55,7 +63,7 @@
       </div>
 
       <button class="btn btn-success">
-        Create Loan
+        Lend a Pass
       </button>
       or
       <a href="/loans">Cancel</a>

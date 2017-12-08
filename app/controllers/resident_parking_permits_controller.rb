@@ -10,10 +10,13 @@ class ResidentParkingPermitsController < ApplicationController
   end
 
   def index
-    @q = current_user.resident_parking_permits.ransack(params[:q])
-      @resident_parking_permits = @q.result(:distinct => true).includes(:resident, :resident_vehicle).page(params[:page]).per(10)
+    @v = current_user.visitor_parking_permits.ransack(params[:v])
+      @visitor_parking_permits = @v.result(:distinct => true).includes(:resident, :loans).page(params[:page]).per(10)
 
-    render("resident_parking_permits/index.html.erb")
+    @r = current_user.resident_parking_permits.ransack(params[:r])
+      @resident_parking_permits = @r.result(:distinct => true).includes(:resident, :resident_vehicle).page(params[:page]).per(10)
+
+    render("visitor_parking_permits/index.html.erb")
   end
 
   def show
@@ -44,9 +47,9 @@ class ResidentParkingPermitsController < ApplicationController
 
       case referer
       when "/resident_parking_permits/new", "/create_resident_parking_permit"
-        redirect_to("/resident_parking_permits")
+        redirect_to("/parking_permits")
       else
-        redirect_back(:fallback_location => "/", :notice => "Resident parking permit created successfully.")
+        redirect_back(:fallback_location => "/", :notice => "Resident parking permit activated successfully.")
       end
     else
       render("resident_parking_permits/new.html.erb")
@@ -73,9 +76,9 @@ class ResidentParkingPermitsController < ApplicationController
 
       case referer
       when "/resident_parking_permits/#{@resident_parking_permit.id}/edit", "/update_resident_parking_permit"
-        redirect_to("/resident_parking_permits/#{@resident_parking_permit.id}", :notice => "Resident parking permit updated successfully.")
+        redirect_to("/resident_parking_permits/#{@resident_parking_permit.id}", :notice => "Resident parking permit activated successfully.")
       else
-        redirect_back(:fallback_location => "/", :notice => "Resident parking permit updated successfully.")
+        redirect_back(:fallback_location => "/", :notice => "Resident parking permit activated successfully.")
       end
     else
       render("resident_parking_permits/edit.html.erb")

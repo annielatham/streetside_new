@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Vehicles
-    <a href="/vehicles/new" class="btn btn-lg btn-success">New Vehicle</a>
+    Vehicles&nbsp;&nbsp;
+    <a href="/vehicles/new" class="btn btn-md btn-success">Add a New Vehicle</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
@@ -29,7 +29,7 @@
       <a href="/vehicles" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
     <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#vehicles_filters">
-      Show Filters
+      Show/Hide Filters
     </a>
   </div>
 </div>
@@ -38,12 +38,12 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Nickname</th>
-        <th>Make</th>
-        <th>Model</th>
-        <th>Color</th>
-        <th>License plate</th>
-        <th>Actions</th>
+        <th class="col-sm-2">Nickname</th>
+        <th class="col-sm-2">Make</th>
+        <th class="col-sm-2">Model</th>
+        <th class="col-sm-2">Color</th>
+        <th class="col-sm-2">License plate</th>
+        <th class="col-sm-2"></th>
       </tr>
  
       <% @vehicles.each do |vehicle| %>

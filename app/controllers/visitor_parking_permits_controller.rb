@@ -10,9 +10,12 @@ class VisitorParkingPermitsController < ApplicationController
   end
 
   def index
-    @q = current_user.visitor_parking_permits.ransack(params[:q])
-      @visitor_parking_permits = @q.result(:distinct => true).includes(:resident, :loans).page(params[:page]).per(10)
-
+    @v = current_user.visitor_parking_permits.ransack(params[:v])
+      @visitor_parking_permits = @v.result(:distinct => true).includes(:resident, :loans).page(params[:page]).per(10)
+    
+    @r = current_user.resident_parking_permits.ransack(params[:r])
+      @resident_parking_permits = @r.result(:distinct => true).includes(:resident, :resident_vehicle).page(params[:page]).per(10)
+    
     render("visitor_parking_permits/index.html.erb")
   end
 
@@ -44,7 +47,7 @@ class VisitorParkingPermitsController < ApplicationController
 
       case referer
       when "/visitor_parking_permits/new", "/create_visitor_parking_permit"
-        redirect_to("/visitor_parking_permits")
+        redirect_to("/parking_permits")
       else
         redirect_back(:fallback_location => "/", :notice => "Visitor parking permit created successfully.")
       end
