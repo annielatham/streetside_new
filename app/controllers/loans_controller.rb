@@ -1,6 +1,7 @@
 class LoansController < ApplicationController
   def index
-    @loans = Loan.page(params[:page]).per(10)
+    @q = Loan.ransack(params[:q])
+    @loans = @q.result(:distinct => true).includes(:vehicle, :visitor_parking_permit, :lender).page(params[:page]).per(10)
 
     render("loans/index.html.erb")
   end
