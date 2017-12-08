@@ -1,7 +1,8 @@
 class LoansController < ApplicationController
   def index
+
     @q = Loan.ransack(params[:q])
-    @loans = @q.result(:distinct => true).includes(:vehicle, :visitor_parking_permit, :lender).page(params[:page]).per(10)
+    @loans = @q.result(:distinct => true).includes(:vehicle, :visitor_parking_permit,).page(params[:page]).per(10)
     # @visitor_pass_loans = current_user.visitor_pass_loans
 
     render("loans/index.html.erb")
@@ -16,7 +17,6 @@ class LoansController < ApplicationController
   def new
     @loan = Loan.new
     
-
     render("loans/new.html.erb")
   end
 
@@ -27,7 +27,8 @@ class LoansController < ApplicationController
     @loan.permit_id = params[:permit_id]
     @loan.start_time = params[:start_time] 
     @loan.end_time = params[:end_time]
-
+    @loan.resident_id = params[:resident_id] 
+  
     save_status = @loan.save 
 
     if save_status == true
@@ -57,6 +58,8 @@ class LoansController < ApplicationController
     @loan.permit_id = params[:permit_id]
     @loan.start_time = params[:start_time]
     @loan.end_time = params[:end_time]
+    @loan.resident_id = params[:resident_id] 
+    
 
     save_status = @loan.save
 

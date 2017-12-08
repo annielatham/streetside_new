@@ -16,16 +16,22 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12"> 
     <form action="/create_loan" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for vehicle_id -->
+      <!-- Label and input for resident_id -->
+      <input type="hidden" name="resident_id" value="<%= current_user.id %>">
+ 
+       <!-- Label and input for vehicle_id -->
       <div class="form-group">
         <label for="vehicle_id" class="control-label">
           Vehicle
         </label>
+
+<!--This syntax example almost worked, but not quite... <#%= f.association :client, label_method: lambda { |c| "#{c.first_name} #{c.last_name}" }, collection: Client.where(user_id: current_user.id) %>-->
+
 
         <%= select_tag(:vehicle_id, options_from_collection_for_select(Vehicle.all, :id, :nickname, @loan.vehicle_id), :class => "form-control") %>
       </div>
@@ -35,27 +41,11 @@
         <label for="permit_id" class="control-label">
           Permit
         </label>
-
-        <!--permit_id of the loan points to the permit-->
-        <!--resident_id of the permit points to the user-->
-        
-        Loan.permit_id == VisitorParkingPermit.id
-        
-        <% @variable each do |var|
-        if Loan.permit_id == VisitorParkingPermit.id
-          
-          VisitorParkingPermit.resident_id == current_user
-        
-        user.id == current_user
-        VisitorParkingPermit.find_by({p})
-        
-        %>
+      
+       
         <%= select_tag(:permit_id, options_from_collection_for_select(VisitorParkingPermit.all, :id, :resident_id, @loan.permit_id), :class => "form-control") %>
 
-
-        <#%= select_tag(:permit_id, options_from_collection_for_select(VisitorParkingPermit.all, :id, :resident_id, @loan.permit_id), :class => "form-control") %>
       </div>
-                 <#%= User.find_by({:id => like.user_id}).username %> likes this
 
       <!-- Label and input for start_time -->
       <div class="form-group">

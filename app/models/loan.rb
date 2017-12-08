@@ -8,16 +8,16 @@ class Loan < ApplicationRecord
   belongs_to :vehicle,
              :counter_cache => :visitor_pass_uses_count
 
+  belongs_to :resident, :class_name => "User"
+
   # Indirect associations
 
-  has_one    :lender,
-             :through => :visitor_parking_permit,
-             :source => :resident
+
 
   # Validations
   validates :start_time, :end_time, :overlap => {:scope => "permit_id"}
   # validates :start_time, :end_time, :overlap => {:scope => "permit_id"}
 
-  validates :valid_date, :expiration_date, :overlap => {:scope => DateTime.now}
+  # validates :valid_date, :expiration_date, :overlap => {:scope => DateTime.now}
   
 end

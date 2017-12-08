@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   def index
     @q = Vehicle.ransack(params[:q])
-    @vehicles = @q.result(:distinct => true).includes(:resident_parking_permit, :visitor_pass_uses, :vehicle_owner).page(params[:page]).per(10)
+    @vehicles = @q.result(:distinct => true).includes(:resident_parking_permit).page(params[:page]).per(10)
 
     render("vehicles/index.html.erb")
   end
@@ -28,6 +28,8 @@ class VehiclesController < ApplicationController
     @vehicle.color = params[:color]
     @vehicle.license_plate = params[:license_plate]
     @vehicle.nickname = params[:nickname]
+    @vehicle.resident_id = params[:resident_id]
+
 
     save_status = @vehicle.save
 
@@ -60,7 +62,8 @@ class VehiclesController < ApplicationController
     @vehicle.color = params[:color]
     @vehicle.license_plate = params[:license_plate]
     @vehicle.nickname = params[:nickname]
-
+    @vehicle.resident_id = params[:resident_id]
+  
     save_status = @vehicle.save
 
     if save_status == true

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "vehicles#index"
+  root :to => "loans#index" 
   # Routes for the Loan resource:
   # CREATE
   get "/loans/new", :controller => "loans", :action => "new"

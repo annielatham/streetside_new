@@ -33,7 +33,7 @@ class ResidentParkingPermitsController < ApplicationController
 
   def create
     @resident_parking_permit = ResidentParkingPermit.new
-
+ 
     @resident_parking_permit.resident_id = params[:resident_id]
     @resident_parking_permit.vehicle_id = params[:vehicle_id]
     @resident_parking_permit.valid_date = params[:valid_date]

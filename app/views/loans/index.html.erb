@@ -135,10 +135,7 @@
       <%= f.text_field :vehicle_nickname_cont, :class => "form-control", :placeholder => "Vehicle nickname contains" %>
     </div>
 
-<!--<div class="form-group">-->
-<!--      <#%= f.label :lender_username_cont, "User username contains" %>-->
-<!--      <#%= f.text_field :lender_username_cont, :class => "form-control", :placeholder => "User username contains" %>-->
-<!--    </div>-->
+
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -163,28 +160,31 @@
 
       <% @loans.each do |loan| %>
       <tr>
+       <% if current_user.id == loan.resident_id %>
         <td>
-          <% if loan.vehicle.present? %>
-            <a href="/vehicles/<%= loan.vehicle.id %>">
-              <%= loan.vehicle.nickname %>
-            </a>
-          <% end %>
-        </td>
-        <td>
-          <% if loan.visitor_parking_permit.present? %>
-            <a href="/visitor_parking_permits/<%= loan.visitor_parking_permit.id %>">
-              <%= loan.visitor_parking_permit.resident_id %>
-            </a>
-          <% end %>
-        </td>
-        <td><%= loan.start_time.strftime("%A, %B %-d, %Y, %l:%M %P") %></td>
-        <td><%= loan.end_time.strftime("%A, %B %-d, %Y, %l:%M %P") %></td>
-        <td>
-          <!--<a href="/loans/<%= loan.id %>" class="btn btn-primary">Show</a>-->
-          <a href="/loans/<%= loan.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_loan/<%= loan.id %>" class="btn btn-danger" rel="nofollow">Revoke</a>
-        </td>
-      </tr>
+            <% if loan.vehicle.present? %>
+              <a href="/vehicles/<%= loan.vehicle.id %>">
+                <%= loan.vehicle.nickname %>
+              </a>
+            <% end %>
+          </td>
+          <td>
+            <% if loan.visitor_parking_permit.present? %>
+              <a href="/visitor_parking_permits/<%= loan.visitor_parking_permit.id %>">
+                <%= loan.visitor_parking_permit.resident_id %>
+              </a>
+            <% end %>
+          </td>
+          <td><%= loan.start_time.strftime("%A, %B %-d, %Y, %l:%M %P") %></td>
+          <td><%= loan.end_time.strftime("%A, %B %-d, %Y, %l:%M %P") %></td>
+          <td>
+            <!--<a href="/loans/<%= loan.id %>" class="btn btn-primary">Show</a>-->
+            <a href="/loans/<%= loan.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_loan/<%= loan.id %>" class="btn btn-danger" rel="nofollow">Revoke</a>
+          </td>
+        </tr>
+        <% else %> 
+        <% end %>
       <% end %>
     </table>
     <%= paginate @loans, theme: 'twitter-bootstrap-4' %>

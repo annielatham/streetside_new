@@ -18,14 +18,15 @@
       <% @visitor_parking_permits.each do |visitor_parking_permit| %>
       <tr>
         <td> 
-          <% if current_user == visitor_parking_permit.resident %>
+        
+          <% if current_user.id == visitor_parking_permit.resident %>
             <a href="/users/<%= visitor_parking_permit.resident.id %>">
               <%= visitor_parking_permit.resident.address_formatted_address %>
             </a>
           <% end %>
         </td>
-        <td><%= visitor_parking_permit.valid_date.strftime("%A, %B %d, %Y") %></td>
-        <td><%= visitor_parking_permit.expiration_date.strftime("%A, %B %d, %Y") %></td>
+        <td><%= visitor_parking_permit.valid_date.strftime("%A, %B %-d, %Y") %></td>
+        <td><%= visitor_parking_permit.expiration_date.strftime("%A, %B %-d, %Y") %></td>
         <td>
           <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>" class="btn btn-primary">Show Details</a>
           
@@ -67,8 +68,8 @@
             </a>
           <% end %>
         </td>
-        <td><%= resident_parking_permit.valid_date %></td>
-        <td><%= resident_parking_permit.expiration_date %></td>
+        <td><%= resident_parking_permit.valid_date.strftime("%A, %B %-d, %Y") %></td>
+        <td><%= resident_parking_permit.expiration_date.strftime("%A, %B %-d, %Y") %></td>
         <td>
           <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-primary">Show Details</a>
           

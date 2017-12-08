@@ -27,15 +27,20 @@ class User < ApplicationRecord
   has_many   :resident_parking_permits, 
              :foreign_key => "resident_id"
 
+  has_many   :loans, :foreign_key => "resident_id"
+
+  has_many   :vehicles, :foreign_key => "resident_id"
+
+
   # Indirect associations
 
-  has_many   :resident_vehicles,
-             :through => :resident_parking_permits,
-             :source => :resident_vehicle
+  # has_many   :resident_vehicles,
+  #           :through => :resident_parking_permits,
+  #           :source => :resident_vehicle
 
-  has_many   :visitor_pass_loans,
-             :through => :visitor_parking_permits,
-             :source => :loans
+  # has_many   :visitor_pass_loans,
+  #           :through => :visitor_parking_permits,
+  #           :source => :loans
 
   # Validations
 

@@ -41,24 +41,27 @@
         <th class="col-sm-2">Nickname</th>
         <th class="col-sm-2">Make</th>
         <th class="col-sm-2">Model</th>
-        <th class="col-sm-2">Color</th>
+        <th class="col-sm-1">Color</th>
         <th class="col-sm-2">License plate</th>
-        <th class="col-sm-2"></th>
-      </tr>
+        <th class="col-sm-3"></th>
+      </tr> 
  
       <% @vehicles.each do |vehicle| %>
       <tr>
+        <% if current_user.id == vehicle.resident_id %>
         <td><a href="/vehicles/<%= vehicle.id %>"><%= vehicle.nickname %></a></td>
         <td><%= vehicle.make %></td>
         <td><%= vehicle.model %></td>
         <td><%= vehicle.color %></td>
         <td><%= vehicle.license_plate %></td>
         <td>
-          <!--<a href="/vehicles/<#%= vehicle.id %>" class="btn btn-primary">Show</a>-->
+          <a href="/loans/new" class="btn btn-primary">Lend a Pass</a>
           <a href="/vehicles/<%= vehicle.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_vehicle/<%= vehicle.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
-      </tr>
+        <% else %>
+        <% end %>
+      </tr> 
       <% end %>
     </table>
     <%= paginate @vehicles, theme: 'twitter-bootstrap-4' %>
