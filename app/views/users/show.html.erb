@@ -1,14 +1,14 @@
 <div class="page-header">
-  <h3><%= @user.username %>&nbsp;&nbsp;
-      <a href="/users/<%= current_user.id %>" class="btn btn-md btn-success">Edit Profile</a>
-</h3>
-</div>
+  <h1><%= @user.username %>&nbsp;&nbsp;
+      <a href="/users/edit" class="btn btn-md btn-success">Edit Profile</a>
+</h1>
+</div> 
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
  
-      <dt>Name</dt>
+      <h3><dt>Name</dt>
       <dd><%= @user.first_name %> <%= @user.last_name %></dd>
 
       <dt>Email</dt>
@@ -17,147 +17,147 @@
       <dt>Address</dt>
       <dd><%= @user.address_formatted_address %>
         <div>
-          <div id="location_map" style="height: 350px; width: 350px"></div> 
+          <div id="location_map" style="height: 400px; width: 600px"></div> 
         </div>
-      </dd>
+      </dd></h3>
 
     </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/users" class="btn btn-primary">
-        Back
-      </a>
-    </div>
+    <!--<div class="btn-group btn-group-justified">-->
+    <!--  <a href="/users" class="btn btn-primary">-->
+    <!--    Back-->
+    <!--  </a>-->
+    <!--</div>-->
   </div>
 </div>
 
 <!-- A User has many resident_parking_permits -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Resident Parking Permits
-      </li>
+<!--<div class="row">-->
+<!--  <div class="col-md-12">-->
+<!--    <ul class="list-group">-->
+<!--      <li class="list-group-item list-group-item-info">-->
+<!--        Resident Parking Permits-->
+<!--      </li>-->
 
-      <% @user.resident_parking_permits.each do |resident_parking_permit| %>
-        <li class="list-group-item">
-          <a href="/resident_parking_permits/<%= resident_parking_permit.id %>">
-            <%= resident_parking_permit.resident_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/resident_parking_permits/<%= resident_parking_permit.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == resident_parking_permit.resident %>
-              <a href="/resident_parking_permits/<%= resident_parking_permit.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_resident_parking_permit/<%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<!--      <#% @user.resident_parking_permits.each do |resident_parking_permit| %>-->
+<!--        <li class="list-group-item">-->
+<!--          <a href="/resident_parking_permits/<#%= resident_parking_permit.id %>">-->
+<!--            <#%= resident_parking_permit.resident_id %>-->
+<!--          </a>-->
+<!--          <div class="btn-group btn-group-xs pull-right">-->
+<!--            <a href="/resident_parking_permits/<#%= resident_parking_permit.id %>" class="btn btn-primary">-->
+<!--              <i class="fa fa-search-plus"></i>-->
+<!--            </a>-->
+<!--            <#%if current_user == resident_parking_permit.resident %>-->
+<!--              <a href="/resident_parking_permits/<#%= resident_parking_permit.id %>/edit" class="btn btn-warning">-->
+<!--                <i class="fa fa-edit"></i>-->
+<!--              </a>-->
+<!--              <a href="/delete_resident_parking_permit/<#%= resident_parking_permit.id %>" class="btn btn-danger" rel="nofollow">-->
+<!--                <i class="fa fa-trash-o"></i>-->
+<!--              </a>-->
+<!--            <#% end %>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      <#% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- A User has many visitor_parking_permits -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Visitor Parking Permits
-      </li>
+<!--<div class="row">-->
+<!--  <div class="col-md-12">-->
+<!--    <ul class="list-group">-->
+<!--      <li class="list-group-item list-group-item-info">-->
+<!--        Visitor Parking Permits-->
+<!--      </li>-->
 
-      <% @user.visitor_parking_permits.each do |visitor_parking_permit| %>
-        <li class="list-group-item">
-          <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>">
-            <%= visitor_parking_permit.resident_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == visitor_parking_permit.resident %>
-              <a href="/visitor_parking_permits/<%= visitor_parking_permit.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_visitor_parking_permit/<%= visitor_parking_permit.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<!--      <#% @user.visitor_parking_permits.each do |visitor_parking_permit| %>-->
+<!--        <li class="list-group-item">-->
+<!--          <a href="/visitor_parking_permits/<#%= visitor_parking_permit.id %>">-->
+<!--            <#%= visitor_parking_permit.resident_id %>-->
+<!--          </a>-->
+<!--          <div class="btn-group btn-group-xs pull-right">-->
+<!--            <a href="/visitor_parking_permits/<#%= visitor_parking_permit.id %>" class="btn btn-primary">-->
+<!--              <i class="fa fa-search-plus"></i>-->
+<!--            </a>-->
+<!--            <#%if current_user == visitor_parking_permit.resident %>-->
+<!--              <a href="/visitor_parking_permits/<#%= visitor_parking_permit.id %>/edit" class="btn btn-warning">-->
+<!--                <i class="fa fa-edit"></i>-->
+<!--              </a>-->
+<!--              <a href="/delete_visitor_parking_permit/<#%= visitor_parking_permit.id %>" class="btn btn-danger" rel="nofollow">-->
+<!--                <i class="fa fa-trash-o"></i>-->
+<!--              </a>-->
+<!--            <#% end %>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      <#% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- A User has many visitor_pass_loans -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Visitor Pass Loans
-      </li>
+<!--<div class="row">-->
+<!--  <div class="col-md-12">-->
+<!--    <ul class="list-group">-->
+<!--      <li class="list-group-item list-group-item-info">-->
+<!--        Visitor Pass Loans-->
+<!--      </li>-->
 
-      <% @user.visitor_pass_loans.each do |loan| %>
-        <li class="list-group-item">
-          <a href="/loans/<%= loan.id %>">
-            <%= loan.vehicle_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/loans/<%= loan.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/loans/<%= loan.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_loan/<%= loan.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<!--      <#% @user.visitor_pass_loans.each do |loan| %>-->
+<!--        <li class="list-group-item">-->
+<!--          <a href="/loans/<#%= loan.id %>">-->
+<!--            <#%= loan.vehicle_id %>-->
+<!--          </a>-->
+<!--          <div class="btn-group btn-group-xs pull-right">-->
+<!--            <a href="/loans/<#%= loan.id %>" class="btn btn-primary">-->
+<!--              <i class="fa fa-search-plus"></i>-->
+<!--            </a>-->
+<!--            <a href="/loans/<#%= loan.id %>/edit" class="btn btn-warning">-->
+<!--              <i class="fa fa-edit"></i>-->
+<!--            </a>-->
+<!--            <a href="/delete_loan/<#%= loan.id %>" class="btn btn-danger" rel="nofollow">-->
+<!--              <i class="fa fa-trash-o"></i>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      <#% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
 
 <!-- A User has many resident_vehicles -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Resident Vehicles
-      </li>
+<!--<div class="row">-->
+<!--  <div class="col-md-12">-->
+<!--    <ul class="list-group">-->
+<!--      <li class="list-group-item list-group-item-info">-->
+<!--        Resident Vehicles-->
+<!--      </li>-->
 
-      <% @user.resident_vehicles.each do |vehicle| %>
-        <li class="list-group-item">
-          <a href="/vehicles/<%= vehicle.id %>">
-            <%= vehicle.nickname %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/vehicles/<%= vehicle.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/vehicles/<%= vehicle.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_vehicle/<%= vehicle.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<!--      <#% @user.resident_vehicles.each do |vehicle| %>-->
+<!--        <li class="list-group-item">-->
+<!--          <a href="/vehicles/<#%= vehicle.id %>">-->
+<!--            <#%= vehicle.nickname %>-->
+<!--          </a>-->
+<!--          <div class="btn-group btn-group-xs pull-right">-->
+<!--            <a href="/vehicles/<#%= vehicle.id %>" class="btn btn-primary">-->
+<!--              <i class="fa fa-search-plus"></i>-->
+<!--            </a>-->
+<!--            <a href="/vehicles/<#%= vehicle.id %>/edit" class="btn btn-warning">-->
+<!--              <i class="fa fa-edit"></i>-->
+<!--            </a>-->
+<!--            <a href="/delete_vehicle/<#%= vehicle.id %>" class="btn btn-danger" rel="nofollow">-->
+<!--              <i class="fa fa-trash-o"></i>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      <#% end %>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 <script src="//maps.google.com/maps/api/js?v=3.24&key=AIzaSyCOTPWiuvyyo6sKoIBzKA4-1ol-vTOIOlM"></script>

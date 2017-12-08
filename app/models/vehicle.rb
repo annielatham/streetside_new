@@ -1,4 +1,5 @@
 class Vehicle < ApplicationRecord
+
   # Direct associations
 
   has_many   :visitor_pass_uses,

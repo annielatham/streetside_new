@@ -23,10 +23,10 @@ class LoansController < ApplicationController
 
     @loan.vehicle_id = params[:vehicle_id]
     @loan.permit_id = params[:permit_id]
-    @loan.start_time = params[:start_time]
+    @loan.start_time = params[:start_time] 
     @loan.end_time = params[:end_time]
 
-    save_status = @loan.save
+    save_status = @loan.save 
 
     if save_status == true
       referer = URI(request.referer).path

@@ -15,5 +15,6 @@ class Loan < ApplicationRecord
              :source => :resident
 
   # Validations
+  validates :start_time, :end_time, :overlap => {:scope => "permit_id"}
 
 end
