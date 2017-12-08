@@ -5,6 +5,8 @@ class ResidentParkingPermit < ApplicationRecord
 
   # Validations
 
+  validates :activation_code, :inclusion => { :in => [ '2018respass1', '2018respass2', '2018respass3', '2018respass4' ]  }
+
   validates :expiration_date, :presence => true
 
   validates :resident_id, :uniqueness => { :scope => [:vehicle_id] }
