@@ -5,4 +5,6 @@ class Vehicle < ApplicationRecord
 
   # Validations
 
+  validates :year, :presence => true
+
 end
